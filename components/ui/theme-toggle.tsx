@@ -1,22 +1,20 @@
-"use client"
-
-import { useColorScheme } from "nativewind";
+import { useExtendedColorScheme } from "@/hooks/use-extended-color-scheme";
 import { Button } from "../core/button";
 import { Icon } from "../core/icon";
-import { THEME_ICONS } from "@/constants/theme-icons";
-
+import { Text } from "../core/text";
 
 export const ThemeToggle = () => {
-    const { colorScheme, toggleColorScheme } = useColorScheme();
+  const { colorScheme, toggleColorScheme, colorIcon } = useExtendedColorScheme();
 
-    return (
-        <Button
-            onPressIn={toggleColorScheme}
-            size="icon"
-            variant="ghost"
-            className="ios:size-9 rounded-full web:mx-4"
-        >
-            <Icon as={THEME_ICONS[colorScheme ?? 'light']} className="size-5" />
-        </Button>
-    );
-}
+  return (
+    <Button
+      onPressIn={toggleColorScheme}
+      size="lg"
+      variant="ghost"
+      className="ios:size-9 web:mx-4"
+    >
+      <Icon as={colorIcon} className="size-5" />
+      <Text>{colorScheme === 'dark' ? 'Dark' : 'Light'}</Text>
+    </Button>
+  );
+};
