@@ -2,9 +2,12 @@ import { useExtendedColorScheme } from "@/hooks/use-extended-color-scheme";
 import { Button } from "../core/button";
 import { Icon } from "../core/icon";
 import { Text } from "../core/text";
+import { useTranslation } from "react-i18next";
 
 export const ThemeToggle = () => {
   const { colorScheme, toggleColorScheme, colorIcon } = useExtendedColorScheme();
+  const { t } = useTranslation("common", { keyPrefix: "screen.settings.theme.options" })
+  
 
   return (
     <Button
@@ -14,7 +17,7 @@ export const ThemeToggle = () => {
       className="ios:size-9 web:mx-4"
     >
       <Icon as={colorIcon} className="size-5" />
-      <Text>{colorScheme === 'dark' ? 'Dark' : 'Light'}</Text>
+      <Text>{colorScheme === 'dark' ? t("dark") : t("light")}</Text>
     </Button>
   );
 };
