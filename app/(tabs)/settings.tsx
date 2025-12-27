@@ -12,7 +12,6 @@ export default function SettingsScreen() {
 
     return (
         <>
-            <Stack.Screen options={{ title: t("title") }} />
             <View className="m-4 flex flex-col gap-4">
                 <Suspense fallback={null}>
                     <SettingsField title={t("theme.title")} description={t("theme.description")}>

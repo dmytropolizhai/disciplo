@@ -1,5 +1,11 @@
 {
     "screen": {
+        "dashboard": {
+            "title": "Dashboard"
+        },
+        "home": {
+            "title": "Home"
+        },
         "settings": {
             "title": "Settings",
             "theme": {

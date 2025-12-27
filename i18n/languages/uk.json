@@ -1,5 +1,11 @@
 {
     "screen": {
+        "dashboard": {
+            "title": "Графік"
+        },
+        "home": {
+            "title": "Головна"
+        },
         "settings": {
             "title": "Налаштування",
             "theme": {
