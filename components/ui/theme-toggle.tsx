@@ -5,9 +5,8 @@ import { Text } from "../core/text";
 import { useTranslation } from "react-i18next";
 
 export const ThemeToggle = () => {
-  const { colorScheme, toggleColorScheme, colorIcon } = useExtendedColorScheme();
+  const { colorScheme,  toggleColorScheme, colorIcon } = useExtendedColorScheme();
   const { t } = useTranslation("common", { keyPrefix: "screen.settings.theme.options" })
-  
 
   return (
     <Button
