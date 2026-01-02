@@ -1,56 +1,39 @@
-import AsyncStorage from "@lib/async-storage"
 import { useCallback, useEffect, useState } from "react";
+import { getData, setData } from '@lib/storage';
 
 /**
  * Custom hook for using async storage in React components
- * 
+ *
  * @param key Storage key to use
  * @param initialValue Default value if key doesn't exist
  * @returns [value, setValue, loading, error]
  */
-export function useStorage<T extends string>(
-  key: string,
-  initialValue: T | undefined = undefined
-) {
-  const [storedValue, setStoredValue] = useState<T | undefined>(initialValue);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
+export function useStorage<T>(key: string, initialValue: T) {
+  const [value, setValue] = useState<T>(initialValue);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    const loadStoredValue = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const value = await AsyncStorage.get<T>(key);
-        setStoredValue(value ?? initialValue);
-      } catch (err) {
-        setError(err instanceof Error ? err : new Error('Failed to load from storage'));
-      } finally {
-        setLoading(false);
+    let mounted = true;
+
+    getData<T>(key).then((stored) => {
+      if (mounted && stored !== undefined) {
+        setValue(stored);
       }
+      setLoaded(true);
+    });
+
+    return () => {
+      mounted = false;
     };
+  }, [key]);
 
-    loadStoredValue();
-  }, [key, initialValue]);
-
-  // Function to update storage and state
-  const setValue = useCallback(
-    async (value: T | undefined) => {
-      try {
-        setError(null);
-        if (value === undefined) {
-          setStoredValue(undefined);
-        } else {
-          await AsyncStorage.save(key, value!);
-          setStoredValue(value);
-        }
-      } catch (err) {
-        setError(err instanceof Error ? err : new Error('Failed to save to storage'));
-        throw err;
-      }
+  const setStoredValue = useCallback(
+    async (newValue: T) => {
+      setValue(newValue);
+      await setData(key, newValue);
     },
     [key]
   );
 
-  return [storedValue, setValue, loading, error] as const;
+  return [value, setStoredValue, loaded] as const;
 }
