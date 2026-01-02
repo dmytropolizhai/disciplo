@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 
 export const useColorScheme = () => {
-    const { colorScheme, setColorScheme, toggleColorScheme } = useNativeColorScheme();
+    const { colorScheme, setColorScheme } = useNativeColorScheme();
     const [colorSchemeInStorage, setColorSchemeInStorage, loading] = useStorage("color-scheme", colorScheme);
     
     useEffect(() => {
