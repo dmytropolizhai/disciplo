@@ -1,5 +1,6 @@
 import { ScrollViewStyleReset } from 'expo-router/html';
 import { type PropsWithChildren } from 'react';
+import i18n from "@/i18n";
 
 // This file is web-only and used to configure the root HTML for every
 // web page during static rendering.
@@ -7,7 +8,7 @@ import { type PropsWithChildren } from 'react';
 // do not have access to the DOM or browser APIs.
 export default function Root({ children }: PropsWithChildren) {
   return (
-    <html lang="en" className="bg-background">
+    <html lang={i18n.language} className="bg-background">
       <head>
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
