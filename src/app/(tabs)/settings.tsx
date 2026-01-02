@@ -1,7 +1,6 @@
-import { LanguageSelect } from "@/components/ui/language-select";
-import { SettingsField } from "@/components/ui/settings";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
-import { Stack } from "expo-router";
+import { LanguageSelect } from "@/components/feature/language/language-select";
+import { SettingsField } from "@/components/feature/settings";
+import { ThemeToggle } from "@/components/feature/theme/theme-toggle";
 import { Suspense } from "react";
 import { useTranslation } from "react-i18next";
 import { View } from "react-native";

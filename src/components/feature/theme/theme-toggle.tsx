@@ -1,7 +1,7 @@
-import { useColorScheme } from "@/hooks/use-color-scheme";
-import { Button } from "../core/button";
-import { Icon } from "../core/icon";
-import { Text } from "../core/text";
+import { useColorScheme } from "./hooks/use-color-scheme";
+import { Button } from "@ui/button";
+import { Icon } from "@ui/icon";
+import { Text } from "@ui/text";
 import { useTranslation } from "react-i18next";
 
 export const ThemeToggle = () => {
@@ -10,7 +10,7 @@ export const ThemeToggle = () => {
 
   return (
     <Button
-      onPressIn={toggleColorScheme}
+      onPress={toggleColorScheme}
       size="lg"
       variant="ghost"
       className="ios:size-9 web:mx-4"

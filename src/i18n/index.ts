@@ -5,7 +5,7 @@ import * as Localization from 'expo-localization';
 import EN from './languages/en.json';
 import UK from './languages/uk.json';
 
-const resources = {
+export const resources = {
   en: { common: EN },
   uk: { common: UK },
 } as const;
@@ -22,7 +22,7 @@ const getDeviceLanguage = (): string => {
   }
   
   // Fall back to just the language code (e.g., 'en')
-  return resources[primaryLocale.languageCode as keyof typeof resources] 
+  return resources[primaryLocale.languageCode as keyof typeof resources]
     ? primaryLocale.languageCode 
     : 'en';
 };

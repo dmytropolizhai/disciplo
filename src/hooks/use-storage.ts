@@ -1,4 +1,4 @@
-import { getFromStorage, saveToStorage } from "@/lib/storage"
+import AsyncStorage from "@lib/async-storage"
 import { useCallback, useEffect, useState } from "react";
 
 /**
@@ -21,7 +21,7 @@ export function useStorage<T extends string>(
       try {
         setLoading(true);
         setError(null);
-        const value = await getFromStorage<T>(key);
+        const value = await AsyncStorage.get<T>(key);
         setStoredValue(value ?? initialValue);
       } catch (err) {
         setError(err instanceof Error ? err : new Error('Failed to load from storage'));
@@ -41,7 +41,7 @@ export function useStorage<T extends string>(
         if (value === null) {
           setStoredValue(null);
         } else {
-          await saveToStorage(key, value!);
+          await AsyncStorage.save(key, value!);
           setStoredValue(value);
         }
       } catch (err) {

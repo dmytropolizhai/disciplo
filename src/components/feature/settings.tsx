@@ -1,8 +1,8 @@
 import { SettingsIcon } from "lucide-react-native"
-import { Button } from "../core/button"
-import { Icon } from "../core/icon"
+import { Button } from "@ui/button"
+import { Icon } from "@ui/icon"
 import { router } from "expo-router"
-import { Card, CardContent, CardDescription, CardTitle } from "../core/card"
+import { Card, CardContent, CardDescription, CardTitle } from "@ui/card"
 import { View } from "react-native"
 import { PropsWithChildren } from "react"
 

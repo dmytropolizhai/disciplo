@@ -1,7 +1,7 @@
-import { Icon } from '@/components/core/icon';
-import { NativeOnlyAnimatedView } from '@/components/core/native-only-animated-view';
-import { TextClassContext } from '@/components/core/text';
-import { cn } from '@/lib/utils';
+import { Icon } from '@ui/icon';
+import { NativeOnlyAnimatedView } from '@ui/native-only-animated-view';
+import { TextClassContext } from '@ui/text';
+import { cn } from '@lib/utils';
 import * as SelectPrimitive from '@rn-primitives/select';
 import { Check, ChevronDown, ChevronDownIcon, ChevronUpIcon } from 'lucide-react-native';
 import * as React from 'react';

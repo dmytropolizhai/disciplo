@@ -1,11 +1,11 @@
-import { THEME_ICONS } from '@/constants/theme';
-import { useColorScheme as useNativewindColorScheme } from 'nativewind';
-import { useStorage } from './use-storage';
+import { THEME_ICONS } from '../lib/theme-consts';
+import { useColorScheme as useNativeColorScheme } from 'nativewind';
+import { useStorage } from '@/hooks/use-storage';
 import { useEffect } from 'react';
 
 
 export const useColorScheme = () => {
-    const { colorScheme, setColorScheme, toggleColorScheme } = useNativewindColorScheme();
+    const { colorScheme, setColorScheme, toggleColorScheme } = useNativeColorScheme();
     const [colorSchemeInStorage, setColorSchemeInStorage, loading] = useStorage("color-scheme", colorScheme);
     
     useEffect(() => {
@@ -17,7 +17,6 @@ export const useColorScheme = () => {
     const colorIcon = THEME_ICONS[colorScheme!];
     
     const handleToggleColorScheme = () => {
-        toggleColorScheme();
         const newScheme = colorScheme === 'dark' ? 'light' : 'dark'; 
         setColorSchemeInStorage(newScheme);
     };

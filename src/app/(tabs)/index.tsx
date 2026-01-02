@@ -1,5 +1,5 @@
-import { Text } from "@/components/core/text";
-import { SettingsTrigger } from "@/components/ui/settings";
+import { Text } from "@/src/components/core/text";
+import { SettingsTrigger } from "@/src/components/ui/settings";
 import { Stack } from "expo-router";
 import { View } from "react-native";
 

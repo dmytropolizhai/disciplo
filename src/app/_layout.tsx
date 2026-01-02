@@ -8,10 +8,6 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useColorScheme } from 'nativewind';
 
-export {
-  ErrorBoundary,
-} from 'expo-router';
-
 export default function RootLayout() {
   const { colorScheme } = useColorScheme();
 
@@ -25,3 +21,7 @@ export default function RootLayout() {
     </ThemeProvider>
   );
 }
+
+export {
+  ErrorBoundary,
+} from 'expo-router';
