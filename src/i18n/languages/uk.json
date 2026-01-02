@@ -1,26 +1,34 @@
 {
-    "screen": {
-        "dashboard": {
-            "title": "Графік"
-        },
-        "home": {
-            "title": "Головна"
-        },
-        "settings": {
-            "title": "Налаштування",
-            "theme": {
-                "title": "Тема",
-                "description": "Виберіть тему.",
-                "options": {
-                    "dark": "Темна",
-                    "light": "Світла"
-                }
-            },
-            "language": {
-              "title": "Мова",
-              "description": "Виберіть мову.",
-              "placeholder": "Select language"
-            }
+  "screen": {
+    "todo": {
+      "title": "Ту Ду"
+    },
+    "dashboard": {
+      "title": "Графік"
+    },
+    "home": {
+      "title": "Головна"
+    },
+    "settings": {
+      "title": "Налаштування",
+      "theme": {
+        "title": "Тема",
+        "description": "Виберіть тему.",
+        "options": {
+          "dark": "Темна",
+          "light": "Світла"
         }
+      },
+      "language": {
+        "title": "Мова",
+        "description": "Виберіть мову.",
+        "placeholder": "Select language"
+      }
     }
+  },
+  "shared": {
+    "save-button": {
+      "label": "Зберегти"
+    }
+  }
 }
