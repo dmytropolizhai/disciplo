@@ -1,13 +1,14 @@
-import { Button } from '@ui/button';
+import { Button, ButtonProps } from '@ui/button';
 import { useTranslation } from '@/hooks/use-translation';
 import { Text } from '@ui/text';
+import { CirclePlusIcon } from 'lucide-react-native';
 
-export const TodoAddButton = () => {
-  const t = useTranslation("share.button.todo-add-button");
+export const AddButton = (props: ButtonProps) => {
 
   return (
-    <Button>
-      <Text>{t("label")}</Text>
+    <Button {...props}>
+      <CirclePlusIcon />
+      {/*<Text>{t("label")}</Text>*/}
     </Button>
   )
 }

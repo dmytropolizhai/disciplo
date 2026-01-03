@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { MoonStarIcon, SunIcon } from 'lucide-react-native';
 
-const icons = {
+const icons = { 
   light: SunIcon,
   dark: MoonStarIcon,
 };

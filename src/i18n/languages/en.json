@@ -30,6 +30,9 @@
     "button": {
       "complete": {
        "label": "Completed"
+      },
+      "todo-add-button": {
+        "label": "Add Task"
       }
     }
   }

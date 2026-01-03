@@ -2,12 +2,11 @@ import { LanguageSelect } from "@/components/feature/language/language-select";
 import { SettingsField } from "@/components/feature/settings";
 import { ThemeToggle } from "@/components/feature/theme/theme-toggle";
 import { Suspense } from "react";
-import { useTranslation } from "react-i18next";
 import { View } from "react-native";
-
+import { useTranslation } from '@/hooks/use-translation';
 
 export default function SettingsScreen() {
-    const { t } = useTranslation("common", { keyPrefix: "screen.settings" })
+    const { t } =  useTranslation("screen.settings");
 
     return (
         <>
