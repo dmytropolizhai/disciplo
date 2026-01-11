@@ -26,6 +26,21 @@
       }
     }
   },
+    "modals": {
+       "create-task": {
+            "input": {
+                "task-name": {
+                    "name": "Task name",
+                    "placeholder": "Shop",
+                },
+                "task-description": {
+                    "name": "Description",
+                    "placeholder": "Fruits, Bananas, Two Chickens"
+                },
+            }
+
+        }
+    },
   "shared": {
     "button": {
       "complete": {

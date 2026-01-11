@@ -1,9 +1,9 @@
-import * as schema from '@/database/schema';
+import * as schema from './schema';
 import { drizzle } from 'drizzle-orm/expo-sqlite';
 import { SQLiteDatabase } from 'expo-sqlite';
 import { NewTask } from './types';
 
-export default class CRUD {
+export default class Crud {
   private drizzleDb;
 
   constructor(db: SQLiteDatabase) {
