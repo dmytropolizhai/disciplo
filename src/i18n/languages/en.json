@@ -28,15 +28,19 @@
   },
     "modals": {
        "create-task": {
+            "title": "Create Task",
             "input": {
                 "task-name": {
-                    "name": "Task name",
+                    "name": "Name",
                     "placeholder": "Shop",
                 },
                 "task-description": {
                     "name": "Description",
                     "placeholder": "Fruits, Bananas, Two Chickens"
                 },
+                "task-deadline": {
+                    "name": "Deadline"
+                }
             }
 
         }
