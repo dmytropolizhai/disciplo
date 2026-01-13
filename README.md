@@ -1,7 +1,7 @@
 
 
 
-![Logo](./assets/readme-preview.webp)
+![Logo](./assets/previews/readme.webp)
 
 # Disciplio
 
