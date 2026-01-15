@@ -1,9 +1,7 @@
 
 
 
-![Logo](./assets/previews/readme.webp)
-
-# Disciplio
+![Disciplio](./assets/previews/readme.webp)
 
 Disciplio helps you build self-discipline through habits, routines, and consistency.
 Stay focused, track progress, and create a disciplined life — one day at a time.
