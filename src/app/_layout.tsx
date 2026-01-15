@@ -6,19 +6,38 @@ import { ThemeProvider } from '@react-navigation/native';
 import { PortalHost } from "@rn-primitives/portal"
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { useColorScheme } from 'nativewind';
+import { useColorScheme } from '@/hooks/use-color-scheme';
+import { Suspense } from 'react';
+import { openDatabaseSync, SQLiteProvider } from 'expo-sqlite';
+import { ActivityIndicator } from 'react-native';
+import { DATABASE_NAME } from '@/database/schema';
+import migrations from '@/database/drizzle/migrations';
+import { drizzle } from 'drizzle-orm/expo-sqlite';
+import { useMigrations } from 'drizzle-orm/expo-sqlite/migrator';
 
 export default function RootLayout() {
   const { colorScheme } = useColorScheme();
+  const expoDb = openDatabaseSync(DATABASE_NAME);
+  const db = drizzle(expoDb);
+  const { success, error } = useMigrations(db, migrations);
 
   return (
-    <ThemeProvider value={NAV_THEME[colorScheme ?? 'light']}>
-      <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      </Stack>
-      <PortalHost />
-    </ThemeProvider>
+    <Suspense fallback={<ActivityIndicator size="large" />} >
+      <SQLiteProvider
+        databaseName={DATABASE_NAME}
+        options={{ enableChangeListener: true }}
+        useSuspense={true}
+      >
+        <ThemeProvider value={NAV_THEME[colorScheme ?? 'light']}>
+          <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="(modals)" options={{ headerShown: false }} />
+          </Stack>
+          <PortalHost />
+        </ThemeProvider>
+      </SQLiteProvider>
+    </Suspense>
   );
 }
 
