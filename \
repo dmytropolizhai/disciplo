@@ -1,6 +1,7 @@
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useTranslation } from "@/hooks/use-translation";
-import { View } from "react-native";
+import { Alert, View} from "react-native";
 import { PropsWithChildren, useState } from "react";
 import { Button, ButtonProps } from "@/components/ui/button";
 import { Target } from "lucide-react-native";
@@ -13,6 +14,19 @@ import { router } from "expo-router";
 import { Form, FormField, FormInput, FormSubmit } from "@/components/shared/form";
 
 const today = new Date();
+
+type FieldProps = {
+    name: string,
+    label: string,
+} & PropsWithChildren
+
+
+const Field = ({ name, label, children }: FieldProps) => (
+    <View className="flex w-full gap-2">
+        <Label htmlFor={name} nativeID={name}>{label}</Label>
+        {children}
+    </View>
+)
 
 
 const DeadlinePicker = (props: Omit<ButtonProps, "onPress">) => {
@@ -54,30 +68,28 @@ const defaultFormProps = {
 }
 
 
-
 export default function CreateTaskModal() {
     const { t } = useTranslation("modals.create-task")
     const createTask = useTaskStore(state => state.createTask)
 
     function handleCreateTask(data: CreateTaskForm) {
-        createTask(data)
+        if (!newTask) { 
+            throw new Error("Can't create empty task!")
+        }
+        createTask(newTask)
         router.navigate("/todo")
     }
 
     return (
         <Form<CreateTaskForm> formProps={defaultFormProps} className="w-full h-full justify-between p-4">
             <View className="flex gap-4 flex-col">
-                <FormField id="name" label={t("input.task-name.label")}>
-                    <FormInput placeholder={t("input.task-name.placeholder")} rules={{ required: t("input.task-name.required"), maxLength: 25 }} />
-                </FormField>
-
-                <FormField id="description" label={t("input.task-description.label")}>
-                    <FormInput placeholder={t("input.task-description.placeholder")}  />
+                <FormField id="name" label="Name">
+                    <FormInput placeholder="Name" rules={{ required: "Name is required" }} />
                 </FormField>
             </View>
 
-            <FormSubmit<CreateTaskForm> onSubmit={handleCreateTask} className="w-full mb-8">
-                <AddButton />
+            <FormSubmit<CreateTaskForm> onSubmit={handleCreateTask} className="w-full">
+                <AddButton className="mb-8" />
             </FormSubmit>
         </Form>
     )
